@@ -1,9 +1,19 @@
+
+
+import { Routes, Route } from 'react-router-dom'
+import ProtectedRoute from './hooks/ProtectedRoute';
+import Login from './pages/Login';
+import Home from './pages/Home';
 export default function App() {
   return (
-    <div className="min-h-screen bg-slate-100 flex items-center justify-center">
-      <h1 className="text-5xl font-bold text-blue-600">
-        Tailwind Works!
-      </h1>
-    </div>
+    <Routes>
+      <Route path='/login' element={<Login/>}/>
+       <Route element={<ProtectedRoute />}>
+        <Route path='/home' element={<Home/>}/>
+       
+       
+       </Route>
+
+    </Routes>
   );
 }
