@@ -1,16 +1,23 @@
 import logo from "../assets/logo.png";
+import icon from "../assets/icon.png";
 
 interface LogoProps {
     style?: string;
+    type?: 1 | 2;
 }
 
-function Logo({ style }: LogoProps) {
+const images = {
+    1: logo,
+    2: icon,
+};
+
+function Logo({ style, type = 1 }: LogoProps) {
     return (
         <span>
-            <img 
-                src={logo} 
-                alt="Logo" 
-                className={style} 
+            <img
+                src={images[type]}
+                alt="Logo"
+                className={style}
             />
         </span>
     );

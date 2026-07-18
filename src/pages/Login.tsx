@@ -47,7 +47,7 @@ function Login() {
     
             <div className="w-full max-w-md bg-gray-100 rounded-xl  border-2 border-amber-300 shadow-md p-8 flex flex-col gap-5">
                 
-                 <Logo style="w-full h-30 " />
+                 <Logo style="w-full h-30 " type={1} />
 
                 <div className="flex flex-col gap-2">
                     <label 
