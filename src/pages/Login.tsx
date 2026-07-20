@@ -33,11 +33,13 @@ function Login() {
         })
     }
     const handleSubmit= ()=>{
-      loginMutation.mutate({
-        email:formData.email,
-        password:formData.password
-    });
+    if (formData.email === "" || formData.password === "") {
+           return;}
 
+   loginMutation.mutate({
+    email: formData.email,
+    password: formData.password,
+});
     }
 
     return (
@@ -64,6 +66,7 @@ function Login() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="Enter your email"
+                        required
                         className="border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-amber-200"
                     />
                 </div>
@@ -83,6 +86,7 @@ function Login() {
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
+                        required
                         placeholder="Enter your password"
                         className="border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-amber-200"
                     />
