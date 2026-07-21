@@ -4,8 +4,7 @@ import { FilterIcon, X } from "lucide-react";
 import { useIsMobile } from "../hooks/useisMobile";
 
 type FilterState = {
-  status: string;
-  Track: string;
+  track: string;
   experienceLevel: string;
   country: string;
   sortBy:
@@ -19,16 +18,16 @@ type FilterState = {
 
 type FilterProp = {
   searchedItem?: (value: string) => void;
+  status?: (value: string) => void
   FilterData?: (data: FilterState) => void;
 };
 
-function FiltersBar({ searchedItem, FilterData }: FilterProp) {
+function FiltersBar({ searchedItem, FilterData ,status}: FilterProp) {
   const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
 
   const [formData, setFormData] = useState<FilterState>({
-    status: "",
-    Track: "",
+    track: "",
     experienceLevel: "",
     country: "",
     sortBy: "",
@@ -52,8 +51,7 @@ function FiltersBar({ searchedItem, FilterData }: FilterProp) {
 
   const handleClear = () => {
     const emptyFilters: FilterState = {
-      status: "",
-      Track: "",
+      track: "",
       experienceLevel: "",
       country: "",
       sortBy: "",
@@ -66,8 +64,8 @@ function FiltersBar({ searchedItem, FilterData }: FilterProp) {
   return (
     <div className="relative mb-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-
-        {/* Search */}
+        
+        {/*who ever is reading this making this was a pain!!*/}
         <input
           type="search"
           placeholder="Search for an applicant..."
@@ -85,14 +83,11 @@ function FiltersBar({ searchedItem, FilterData }: FilterProp) {
           onChange={(e) => searchedItem?.(e.target.value)}
         />
 
-
-        {/* Status */}
         <select
           name="status"
-          value={formData.status}
-          onChange={handleChange}
+          onChange={(e)=>status?.(e.target.value) }
           className="
-            min-w-[170px]
+            min-w-42.5
             rounded-lg
             border border-gray-200
             bg-white
@@ -103,12 +98,10 @@ function FiltersBar({ searchedItem, FilterData }: FilterProp) {
           <option value="">All Status</option>
           <option value="pending">Pending</option>
           <option value="shortlisted">Shortlisted</option>
-          <option value="approved">Approved</option>
+          <option value="accepted">Accepted</option>
           <option value="rejected">Rejected</option>
         </select>
 
-
-        {/* Filter Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={`
@@ -128,8 +121,6 @@ function FiltersBar({ searchedItem, FilterData }: FilterProp) {
 
       </div>
 
-
-      {/* Popup */}
       {isOpen && (
         <div
           className={`
@@ -148,8 +139,6 @@ function FiltersBar({ searchedItem, FilterData }: FilterProp) {
             }
           `}
         >
-
-          {/* Header */}
           <div className="mb-5 flex items-center justify-between">
             <h3 className="text-lg font-semibold text-gray-800">
               Filters
@@ -165,27 +154,26 @@ function FiltersBar({ searchedItem, FilterData }: FilterProp) {
 
 
           <div className="grid grid-cols-2 gap-4">
-
-            {/* Track */}
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-600">
                 Track
               </label>
 
               <select
-                name="Track"
-                value={formData.Track}
+                name="track"
+                value={formData.track}
                 onChange={handleChange}
                 className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm"
               >
                 <option value="">All</option>
                 <option value="frontend">Frontend</option>
                 <option value="backend">Backend</option>
+                <option value="ui-ux">Ui-ux</option>
+                <option value="mobile">mobile</option>
+                <option value="data-analytics">Data-analytics</option>
               </select>
             </div>
 
-
-            {/* Country */}
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-600">
                 Country
@@ -199,11 +187,14 @@ function FiltersBar({ searchedItem, FilterData }: FilterProp) {
               >
                 <option value="">All</option>
                 <option value="ethiopia">Ethiopia</option>
+                <option value="Tanzania">Tanzania</option>
+                <option value="Uganda">Uganda</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Botswana">Botswana</option>
+                <option value="South Africa">South Africa</option>
               </select>
             </div>
 
-
-            {/* Experience */}
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-600">
                 Experience
@@ -222,8 +213,6 @@ function FiltersBar({ searchedItem, FilterData }: FilterProp) {
               </select>
             </div>
 
-
-            {/* Order By */}
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-600">
                 Order By
@@ -249,7 +238,6 @@ function FiltersBar({ searchedItem, FilterData }: FilterProp) {
           </div>
 
 
-          {/* Footer */}
           <div className="mt-5 flex items-center justify-between border-t border-gray-200 pt-4">
 
             <button

@@ -14,13 +14,9 @@ function DesktopHeader() {
       </div>
 
       <div className="flex items-center gap-4">
-        <span className="text-sm text-gray-600">
-          Welcome, <span className="font-semibold">Administrator</span>
+        <span className="text-xl text-gray-600">
+          Welcome, <span className="font-semibold text-amber-900">Administrator</span>
         </span>
-
-        <button className="rounded-lg bg-amber-300 px-4 py-2 font-medium text-gray-900 transition hover:bg-amber-400">
-          Logout
-        </button>
       </div>
     </header>
   );

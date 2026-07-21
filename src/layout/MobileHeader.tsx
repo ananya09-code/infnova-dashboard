@@ -72,20 +72,6 @@ function MobileHeader() {
             Dashboard
           </button>
 
-          <button className="px-6 py-4 text-left font-medium text-gray-700 transition hover:bg-amber-400">
-            Applicants
-          </button>
-
-          <button className="px-6 py-4 text-left font-medium text-gray-700 transition hover:bg-amber-400">
-            Analytics
-          </button>
-
-          <button className="px-6 py-4 text-left font-medium text-gray-700 transition hover:bg-amber-400">
-            Settings
-          </button>
-
-          <hr className="my-2" />
-
           <button className="px-6 py-4 text-left font-medium text-red-600 transition hover:bg-red-50">
             Logout
           </button>

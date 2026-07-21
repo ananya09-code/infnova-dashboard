@@ -6,7 +6,7 @@ export const getData = async ({
   limit,
   search,
   status,
-  Track,
+  track,
   experienceLevel,
   country,
   sortBy,
@@ -15,7 +15,7 @@ export const getData = async ({
   limit: number;
   search?: string;
   status?: string;
-  Track?: string;
+  track?: string;
   experienceLevel?: string;
   country?: string;
   sortBy?: string;
@@ -29,7 +29,7 @@ export const getData = async ({
 
         ...(search && { search }),
         ...(status && { status }),
-        ...(Track && { Track }),
+        ...(track && { track }),
         ...(experienceLevel && { experienceLevel }),
         ...(country && { country }),
         ...(sortBy && { sortBy }),
@@ -43,3 +43,38 @@ export const getData = async ({
 
   return response.data;
 };
+
+
+
+
+
+export const getDetail= async (id:string)=>{
+    const res=await axios.get(
+      `https://infnova-intern.vercel.app/api/applicants/${id}`,{
+        headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }
+      }
+     )
+     return res.data
+
+}
+
+export async function updateStatus(
+  id: string,
+  status: string
+) {
+  const response = await axios.patch(
+    `https://infnova-intern.vercel.app/api/applicants/${id}/status`,
+    {
+      status,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }
+  );
+
+  return response.data;
+}
