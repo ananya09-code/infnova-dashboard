@@ -2,12 +2,16 @@ import Logo from "../components/Logo"
 import { useState } from "react"
 import { useMutation } from "@tanstack/react-query"
 import { loginUser } from "../api/auth"
+import { useNavigate } from "react-router-dom";
+
+
 type Formdata = {
     email: string;
     password: string;
 }
 
 function Login() {
+   const navigate = useNavigate();
     const [formData, setFormdata] = useState<Formdata>({
         email: "",
         password: ""
@@ -18,6 +22,7 @@ function Login() {
     onSuccess: (data) => {
       localStorage.setItem("token", data.accessToken);
       console.log("Logged in", data);
+      navigate("/home")
 
     },
 
