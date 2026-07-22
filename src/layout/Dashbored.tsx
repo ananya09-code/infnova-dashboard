@@ -169,14 +169,14 @@ queryFn: async () => {
       </div>
 
 
-      {Detailid && (
-        <div className="hidden w-96 lg:block">
-          <DetailCard
-            id={Detailid}
-            close={() => setDetailID("")}
-          />
-        </div>
-      )}
+   {Detailid && (
+       <div className="w-full lg:w-96">
+    <DetailCard
+      id={Detailid}
+      close={() => setDetailID("")}
+    />
+  </div>
+)}
 
     </div>
 
