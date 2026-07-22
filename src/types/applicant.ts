@@ -16,4 +16,5 @@ export interface Meta {
 export interface ApplicantResponse {
   data: Applicant[];
   meta: Meta;
+  statusdata:any;
 }

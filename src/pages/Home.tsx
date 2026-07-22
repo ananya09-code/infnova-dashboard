@@ -8,18 +8,23 @@ function Home() {
   const isMobile = useIsMobile();
 
   return (
-    <div className="flex min-h-screen flex-col gap-1">
+    <div className="flex min-h-screen flex-col bg-gray-50">
       {isMobile ? <MobileHeader /> : <DesktopHeader />}
-
       <div className="flex flex-1">
         {!isMobile && <SideBar />}
-
-        <main className="flex-1 bg-gray-50 p-6">
-          <Dashbored/>
+        <main
+          className={`
+            flex-1
+            p-6
+            ${isMobile ? "pt-20" : ""}
+          `}
+        >
+          <Dashbored />
         </main>
-      </div>
 
+      </div>
       <Footer />
+
     </div>
   );
 }

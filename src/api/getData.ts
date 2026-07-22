@@ -78,3 +78,17 @@ export async function updateStatus(
 
   return response.data;
 }
+
+
+export const getStatus= async ()=>{
+  const response=await axios.get(
+      "https://infnova-intern.vercel.app/api/dashboard/summary",
+      {
+       headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }
+
+  );
+    return response.data;
+}
