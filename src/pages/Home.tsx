@@ -12,12 +12,8 @@ function Home() {
   {isMobile ? <MobileHeader /> : <DesktopHeader />}
 
   <div className="flex flex-1">
-    {!isMobile && (
-      <aside className="w-64 border-r bg-white">
-        <SideBar />
-      </aside>
-    )}
-
+    {!isMobile && ( <SideBar />
+  )}
     <main className={`flex-1 p-6 ${isMobile ? "pt-20" : ""}`}>
       <Dashbored />
     </main>
