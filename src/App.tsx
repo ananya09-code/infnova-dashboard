@@ -6,14 +6,14 @@ import Home from './pages/Home';
 export default function App() {
 return (
   <Routes>
-    <Route path="/login" element={<Login />} />
+    <Route path="/" element={<Login />} />
 
     <Route element={<ProtectedRoute />}>
       <Route path="/home" element={<Home />} />
     </Route>
 
     <Route path="/home" element={<Navigate to="/home" replace />} />
-    <Route path="*" element={<Navigate to="/login" replace />} />
+    <Route path="*" element={<Navigate to="/" replace />} />
   </Routes>
 );
 }
