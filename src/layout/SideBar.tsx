@@ -29,9 +29,11 @@ function SideBar() {
 
   return (
     <>
-    <aside className={` h-full  border-r  bg-white   transition-all   duration-300   ${ isCollapsed ? "w-20" : "w-64"  }
-  `}
->
+      <aside
+        className={`h-screen border-r bg-white transition-all duration-300 ${
+          isCollapsed ? "w-20" : "w-64"
+        }`}
+      >
         <div className="flex justify-end p-4">
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
