@@ -40,18 +40,70 @@ function DetailCard({ id, close }: DetailProp) {
 
 
   if (!id) return null;
-  if (isLoading) {
-   return (
-    <div className="flex min-h-[200px] items-center justify-center rounded-xl bg-yellow-50 p-5 text-sm text-gray-600">
-      Loading...
-    </div>
-  );}
+  if (isLoading) { return (
+    <div
+      className="
+      fixed inset-0 z-50 bg-black/30
+      flex justify-end
+      md:static md:bg-transparent
+      ">
+      <div
+        className="
+        w-full h-full bg-white
+        md:w-[380px]
 
-  if (isError) {
+        fixed bottom-0
+        rounded-t-2xl
+
+        md:static
+        md:rounded-none
+
+        flex items-center justify-center
+        overflow-y-auto
+        p-6 shadow-xl
+        "
+      >
+        <p className="text-sm text-gray-600">
+          Loading...
+        </p>
+      </div>
+    </div>
+  );
+}
+
+
+ if (isError) {
     return (
-      <div className="flex min-h-[200px] items-center justify-center rounded-xl border border-red-200 bg-red-50 p-5 text-sm text-red-600">
-       Error loading applicant details
-      </div> );}
+    <div
+      className="
+      fixed inset-0 z-50 bg-black/30
+      flex justify-end
+      md:static md:bg-transparent
+      "
+    >
+      <div
+        className="
+        w-full h-full bg-white
+        md:w-[380px]
+
+        fixed bottom-0
+        rounded-t-2xl
+
+        md:static
+        md:rounded-none
+
+        flex items-center justify-center
+        overflow-y-auto
+        p-6 shadow-xl
+        "
+      >
+        <p className="text-sm text-red-600">
+          Error loading applicant details
+        </p>
+      </div>
+    </div>
+  );
+}
 
 
   return (
