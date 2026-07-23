@@ -1,3 +1,5 @@
+
+
 ﻿# INFNOVA Internship Dashboard
 
 A React + TypeScript dashboard for managing internship applicants with authentication, filtering, applicant details, status updates, and summary metrics.
@@ -6,6 +8,7 @@ A React + TypeScript dashboard for managing internship applicants with authentic
 - URL: <https://infnova-dashboard-mu.vercel.app/>
 - Repo: <https://github.com/ananya09-code/infnova-dashboard.git>
 
+<video src="assets/demo.mp4" controls width="800"></video>
 ## Setup Instructions
 1. Clone the repo:
    ```bash
