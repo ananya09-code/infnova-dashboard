@@ -13,7 +13,7 @@ function Home() {
 
   <div className="flex flex-1">
     {!isMobile && (
-      <aside className="w-64">
+      <aside>
         <SideBar />
       </aside>
     )}
