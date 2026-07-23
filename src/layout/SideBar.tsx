@@ -30,7 +30,7 @@ function SideBar() {
   return (
     <>
       <aside
-        className={`h-screen border-r bg-white transition-all duration-300 ${
+        className={`h-full border-r bg-white transition-all duration-300 ${
           isCollapsed ? "w-20" : "w-64"
         }`}
       >
