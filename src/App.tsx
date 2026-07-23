@@ -12,8 +12,8 @@ return (
       <Route path="/home" element={<Home />} />
     </Route>
 
-    <Route path="/" element={<Navigate to="/home" replace />} />
-    <Route path="*" element={<Navigate to="/home" replace />} />
+    <Route path="/home" element={<Navigate to="/home" replace />} />
+    <Route path="*" element={<Navigate to="/login" replace />} />
   </Routes>
 );
 }
