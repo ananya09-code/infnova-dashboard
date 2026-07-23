@@ -7,27 +7,33 @@ import Dashbored from "../layout/Dashbored";
 function Home() {
   const isMobile = useIsMobile();
 
-  return (
- <div className="flex min-h-screen flex-col bg-gray-50">
+return (
+  <div className="flex min-h-screen flex-col bg-gray-50">
 
-  {isMobile ? <MobileHeader /> : <DesktopHeader />}
+    {isMobile ? <MobileHeader /> : <DesktopHeader />}
 
-  <div className="flex flex-1">
+    <div className="flex flex-1 items-stretch">
 
-    {!isMobile && (
-      <SideBar />
-    )}
+      {!isMobile && <SideBar />}
 
-    <main className="flex-1 min-w-0 p-6">
-      <Dashbored />
-    </main>
+      <main
+        className={`
+          flex-1
+          min-w-0
+          p-6
+          ${isMobile ? "pt-20" : ""}
+        `}
+      >
+        <Dashbored />
+      </main>
+
+    </div>
+
+    <Footer />
 
   </div>
+);
 
-  <Footer />
-
-</div>
-  );
 }
 
 export default Home;
