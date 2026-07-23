@@ -18,7 +18,7 @@ function Home() {
       </aside>
     )}
 
-    <main className="flex-1 p-6">
+    <main className={`flex-1 p-6 ${isMobile ? "pt-20" : ""}`}>
       <Dashbored />
     </main>
   </div>
