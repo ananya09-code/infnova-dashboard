@@ -3,13 +3,13 @@
 A React + TypeScript dashboard for managing internship applicants with authentication, filtering, applicant details, status updates, and summary metrics.
 
 ## Live app
-- URL: <ADD_DEPLOYED_URL_HERE>
-- Repo: <ADD_REPO_URL_HERE>
+- URL: <https://infnova-dashboard-mu.vercel.app/>
+- Repo: <https://github.com/ananya09-code/infnova-dashboard.git>
 
 ## Setup Instructions
 1. Clone the repo:
    ```bash
-   git clone <ADD_REPO_URL_HERE>
+   git clone <https://github.com/ananya09-code/infnova-dashboard.git>
    cd infnova-dashboard
    ```
 2. Install dependencies:
@@ -43,11 +43,6 @@ A React + TypeScript dashboard for managing internship applicants with authentic
 - lucide-react: icon set used throughout headers, buttons, tables, and dialogs.
 - @tailwindcss/vite: Tailwind CSS integration plugin for Vite.
 - tailwindcss: utility-first styling via class names.
-- autoprefixer: CSS vendor prefixing during build.
-- postcss: CSS processing pipeline used by Tailwind.
-- @vitejs/plugin-react: Vite React support.
-- oxlint: linting tool referenced in package scripts.
-- @types/react, @types/react-dom, @types/node: TypeScript definitions for React and Node.
 - typescript: compiler and type checking.
 
 ## Architecture and data flow
@@ -132,11 +127,13 @@ A React + TypeScript dashboard for managing internship applicants with authentic
 - Responsive behavior is handled via `useIsMobile()` using `window.innerWidth < 768`.
 - Applicant summary and detail data follow the typed response shapes in `src/types`.
 
-## What I'd improve with more time
-- Add a dedicated `/login` route and fix the unauthenticated redirect flow.
-- Extract API base URL and auth headers into a shared Axios instance or environment config.
-- Add end-to-end or unit tests for auth, data fetching, and critical component behavior.
-- Add a global error boundary for unexpected render-time exceptions.
-- Improve empty-state handling for no applicants.
-- Clean up build tooling comments, unused code, and the odd filename in `src/types`.
-- Add user-facing error messages for login failures and logout failures.
+## What I'd Improve with More Time
+
+* Add a dedicated `/login` route and improve the authentication and redirect flow.
+* Move the API base URL and authentication configuration into a shared Axios instance using environment variables.
+* Replace hard-coded values (such as status and filter options) with data returned from the API.
+* Add a global error boundary to gracefully handle unexpected runtime errors.
+* Improve the empty-state experience when no applicants match the selected filters.
+* Refactor the codebase by removing unused code and improving the overall project structure.
+* Expand the dashboard with additional pages, such as analytics, application statistics, and other admin features..
+
