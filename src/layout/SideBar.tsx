@@ -6,20 +6,26 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import ConfirmDialog from "../components/ConfirmDialog";
-
+import { logoutUser } from "../api/auth";
 function SideBar() {
+    const navigate=useNavigate()
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
 
-  const handleLogout = () => {
-    console.log("User logged out");
-    setSelected("Dashboard")
-
-    setShowLogoutDialog(false);
-  };
+ const logoutMutation = useMutation({
+  mutationFn: logoutUser,
+  onSuccess: () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  },
+  onError: (error) => {
+    console.error(error);
+  },
+});
 
   return (
     <>
@@ -74,7 +80,7 @@ function SideBar() {
           setShowLogoutDialog(false);
           setSelected("Dashboard");
         }}
-        onYes={handleLogout}
+        onYes={()=>logoutMutation.mutate()}
       />
       </aside>
 

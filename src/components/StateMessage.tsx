@@ -131,7 +131,7 @@ function StateMessage({
 
         {type === "expired" && (
           <Link
-            to="/login"
+            to="/"
             className="
               mt-3
               rounded-lg

@@ -2,17 +2,25 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Logo from "../components/Logo";
 import ConfirmDialog from "../components/ConfirmDialog";
-
+import { useMutation } from "@tanstack/react-query";
+import { logoutUser } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 function MobileHeader() {
+  const navigate=useNavigate()
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
 
-  const handleLogout = () => {
-    console.log("User logged out");
-    setShowLogoutDialog(false);
-    setSelected("Dashboard");
-  };
+  const logoutMutation = useMutation({
+  mutationFn: logoutUser,
+  onSuccess: () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  },
+  onError: (error) => {
+    console.error(error);
+  },
+});
 
   return (
     <>
@@ -95,7 +103,7 @@ function MobileHeader() {
           setShowLogoutDialog(false);
           setSelected("Dashboard");
         }}
-        onYes={handleLogout}
+        onYes={()=>logoutMutation.mutate()}
       />
     </>
   );

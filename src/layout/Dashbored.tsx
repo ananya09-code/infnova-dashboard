@@ -7,7 +7,7 @@ import FiltersBar from "../components/FiltersBar";
 import DetailCard from "../components/DetailCard";
 import ScrollBar from "../components/ScrollBar";
 import StateMessage from "../components/StateMessage";
-
+import axios from "axios";
 import type{ StatusResponse} from "../types/StatusResponse "
 import StatusCard from "../components/StatusCard";
 import StatusBar from "../components/StatusBar";
@@ -39,6 +39,7 @@ function Dashboard() {
     isLoading,
     isFetching,
     isError,
+    error
   } = useQuery<DashboardResponse>({
     queryKey: [
       "applicants",
@@ -74,10 +75,20 @@ queryFn: async () => {
    return <StateMessage type="loading" />;}
 
 
+
+
+
+if (
+  isError &&
+  axios.isAxiosError(error) &&
+  error.response?.status === 401
+) {
+  return <StateMessage type="expired" />;
+}
+
+
    if (isError) {
       return <StateMessage type="error" />;}
-
-    console.log(data?.statusdata)
 
   return (
 <div className="relative space-y-6">
